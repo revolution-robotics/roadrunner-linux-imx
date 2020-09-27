@@ -511,12 +511,6 @@
 		status = "okay";
 	};
 
-	pcf2129t: pcf2127@51 {
-		compatible = "nxp,pcf2127";
-		reg = <0x51>;
-		status = "okay";
-	};
-
 	iio_gpio0: mcp23017_1@20 {
 		compatible = "microchip,mcp23017";
 		gpio-controller;
@@ -614,6 +608,11 @@
 		"DIO_IN_16", "DIO_PP_16", "DIO_OUT_16", "DIO_DI_EN_16";
 	};
 
+	temp_exp: lm75_exp@48 {
+		compatible = "lm75b";
+		reg = <0x48>;
+	};
+
 	// ads1115: ads1115@49 {
 	//	compatible = "ti,ads1115";
 	//	reg = <0x49>;
@@ -648,9 +647,16 @@
 	//	};
 	// };
 
-	temp_exp: lm75_exp@48 {
-		compatible = "lm75b";
-		reg = <0x48>;
+	eeprom_i2c: eeprom@50 {
+		compatible = "atmel,24c512";
+		reg = <0x50>;
+		pagesize = <128>;
+	};
+
+	pcf2129t: pcf2127@51 {
+		compatible = "nxp,pcf2127";
+		reg = <0x51>;
+		status = "okay";
 	};
 
 	/* DS1337 RTC module */
