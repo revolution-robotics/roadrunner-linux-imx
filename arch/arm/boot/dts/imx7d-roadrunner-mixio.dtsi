@@ -529,10 +529,10 @@
 		// gpio-base = <224>;
 
 		gpio-line-names =
-		"DIO_IN_1", "DIO_PP_1", "DIO_OUT_1", "DIO_DI_EN_1",
-		"DIO_IN_2", "DIO_PP_2", "DIO_OUT_2", "DIO_DI_EN_2",
-		"DIO_IN_3", "DIO_PP_3", "DIO_OUT_3", "DIO_DI_EN_3",
-		"DIO_IN_4", "DIO_PP_4", "DIO_OUT_4", "DIO_DI_EN_4";
+		"DIO_IN_1",    "DIO_PP_1",  "DIO_OUT_1", "DIO_DI_EN_1",
+		"DIO_IN_2",    "DIO_PP_2",  "DIO_OUT_2", "DIO_DI_EN_2",
+		"DIO_DI_EN_4", "DIO_OUT_4", "DIO_PP_4",  "DIO_IN_4",
+		"DIO_DI_EN_3", "DIO_OUT_3", "DIO_PP_3",  "DIO_IN_3";
 	};
 
 	iio_gpio1: mcp23017_2@21 {
@@ -553,10 +553,10 @@
 		// gpio-base = <240>;
 
 		gpio-line-names =
-		"DIO_IN_5", "DIO_PP_5", "DIO_OUT_5", "DIO_DI_EN_5",
-		"DIO_IN_6", "DIO_PP_6", "DIO_OUT_6", "DIO_DI_EN_6",
-		"DIO_IN_7", "DIO_PP_7", "DIO_OUT_7", "DIO_DI_EN_7",
-		"DIO_IN_8", "DIO_PP_8", "DIO_OUT_8", "DIO_DI_EN_8";
+		"DIO_IN_5",    "DIO_PP_5",  "DIO_OUT_5", "DIO_DI_EN_5",
+		"DIO_IN_6",    "DIO_PP_6",  "DIO_OUT_6", "DIO_DI_EN_6",
+		"DIO_DI_EN_8", "DIO_OUT_8", "DIO_PP_8",  "DIO_IN_8",
+		"DIO_DI_EN_7", "DIO_OUT_7", "DIO_PP_7",  "DIO_IN_7";
 	};
 
 	iio_gpio2: mcp23017_3@22 {
@@ -577,10 +577,10 @@
 		// gpio-base = <256>;
 
 		gpio-line-names =
-		"DIO_IN_9", "DIO_PP_9", "DIO_OUT_9", "DIO_DI_EN_9",
-		"DIO_IN_10", "DIO_PP_10", "DIO_OUT_10", "DIO_DI_EN_10",
-		"DIO_IN_11", "DIO_PP_11", "DIO_OUT_11", "DIO_DI_EN_11",
-		"DIO_IN_12", "DIO_PP_12", "DIO_OUT_12", "DIO_DI_EN_12";
+		"IO_FAULT",   "IV_SEL_4", "IV_SEL_3",  "IV_SEL_2",
+		"IV_SEL_1",   "#TE485",    "#RS_SHDN", "RS-485/#RS-232",
+		"RS_LOOPBACK", "",         "",          "",
+		"",            "",         "",          "";
 	};
 
 	temp_exp: lm75_exp@48 {
