@@ -8,7 +8,7 @@
 
 obj-$(CONFIG_NET)		:= socket.o core/
 
-tmp-$(CONFIG_COMPAT) 		:= compat.o
+tmp-$(CONFIG_COMPAT)		:= compat.o
 obj-$(CONFIG_NET)		+= $(tmp-y)
 
 # LLC has to be linked before the files in net/802/
@@ -61,7 +61,7 @@ ifneq ($(CONFIG_DCB),)
 obj-y				+= dcb/
 endif
 ifneq ($(CONFIG_TSN),)
-obj-y 				+= tsn/
+obj-y				+= tsn/
 endif
 obj-$(CONFIG_6LOWPAN)		+= 6lowpan/
 obj-$(CONFIG_IEEE802154)	+= ieee802154/
