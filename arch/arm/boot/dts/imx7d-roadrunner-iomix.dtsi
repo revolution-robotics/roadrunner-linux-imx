@@ -33,12 +33,12 @@
 		pwms = <&pwm2 0 5000000 0>;
 		brightness-levels = <0 4 8 16 32 64 128 255>;
 		default-brightness-level = <7>;
-		status = "okay";
+		status = "disabled";
 	};
 
 	pxp_v4l2_out {
 		compatible = "fsl,imx7d-pxp-v4l2", "fsl,imx6sx-pxp-v4l2", "fsl,imx6sl-pxp-v4l2";
-		status = "okay";
+		status = "disabled";
 	};
 
 	sound {
@@ -198,23 +198,23 @@
 			status = "okay";
 		};
 
-		// reg_hsic_hub_pwr_on: reg_hsic_hub_pwr_on {
-		//	   compatible = "regulator-fixed";
-		//	   regulator-name = "hsic_hub_pwr_on";
-		//	   gpio = <&gpio1 10 GPIO_ACTIVE_HIGH>;
-		//	   enable-active-high;
-		//	   regulator-always-on;
-		//	   status = "okay";
-		// };
+		reg_hsic_hub_pwr_on: reg_hsic_hub_pwr_on {
+			   compatible = "regulator-fixed";
+			   regulator-name = "hsic_hub_pwr_on";
+			   gpio = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+			   enable-active-high;
+			   regulator-always-on;
+			   status = "disabled";
+		};
 
-		// reg_hsic_hub_connect: reg_hsic_hub_connect {
-		//	   compatible = "regulator-fixed";
-		//	   regulator-name = "reg_hsic_hub_connect";
-		//	   gpio = <&gpio1 12 GPIO_ACTIVE_HIGH>;
-		//	   enable-active-high;
-		//	   regulator-always-on;
-		//	   status = "okay";
-		// };
+		reg_hsic_hub_connect: reg_hsic_hub_connect {
+			   compatible = "regulator-fixed";
+			   regulator-name = "reg_hsic_hub_connect";
+			   gpio = <&gpio1 12 GPIO_ACTIVE_HIGH>;
+			   enable-active-high;
+			   regulator-always-on;
+			   status = "disabled";
+		};
 	};
 };
 
@@ -240,7 +240,7 @@
 // &csi1 {
 //	csi-mux-mipi = <&gpr 0x14 4>;
 //	fsl,mipi-mode;
-//	status = "okay";
+//	status = "disabled";
 //
 //	port {
 //		csi_ep: endpoint {
@@ -250,56 +250,54 @@
 // };
 
 &epxp {
-	status = "okay";
+	status = "disabled";
 };
 
 &ecspi1 {
+	fsl,spi-num-chipselects = <1>;
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&pinctrl_ecspi1>;
+	pinctrl-1 = <&pinctrl_ecspi1_sleep>;
+	cs-gpios = <&gpio4 19 0>;
 	status = "disabled";
-	// fsl,spi-num-chipselects = <1>;
-	// pinctrl-names = "default", "sleep";
-	// pinctrl-0 = <&pinctrl_ecspi1>;
-	// pinctrl-1 = <&pinctrl_ecspi1_sleep>;
-	// cs-gpios = <&gpio4 19 0>;
-	// status = "okay";
 
-	/* Touch */
-	// ads7846@0 {
-	//	reg = <0>;
-	//	compatible = "ti,ads7846";
-	//	pinctrl-names ="default";
-	//	pinctrl-0 = <&pinctrl_ads7846_pendown>;
-	//	interrupt-parent = <&gpio1>;
-	//	interrupts = <9 0>;
-	//	spi-max-frequency = <1500000>;
-	//	pendown-gpio = <&gpio1 9 0>;
-	//	ti,x-min = /bits/ 16 <125>;
-	//	ti,x-max = /bits/ 16 <4008>;
-	//	ti,y-min = /bits/ 16 <282>;
-	//	ti,y-max = /bits/ 16 <3864>;
-	//	ti,x-plate-ohms = /bits/ 16 <180>;
-	//	ti,pressure-max = /bits/ 16 <255>;
-	//	ti,debounce-max = /bits/ 16 <10>;
-	//	ti,debounce-tol = /bits/ 16 <3>;
-	//	ti,debounce-rep = /bits/ 16 <1>;
-	//	ti,settle-delay-usec = /bits/ 16 <150>;
-	//	ti,keep-vref-on;
-	//	wakeup-source;
-	// };
+	// Touch
+	ads7846@0 {
+		reg = <0>;
+		compatible = "ti,ads7846";
+		pinctrl-names ="default";
+		pinctrl-0 = <&pinctrl_ads7846_pendown>;
+		interrupt-parent = <&gpio1>;
+		interrupts = <9 0>;
+		spi-max-frequency = <1500000>;
+		pendown-gpio = <&gpio1 9 0>;
+		ti,x-min = /bits/ 16 <125>;
+		ti,x-max = /bits/ 16 <4008>;
+		ti,y-min = /bits/ 16 <282>;
+		ti,y-max = /bits/ 16 <3864>;
+		ti,x-plate-ohms = /bits/ 16 <180>;
+		ti,pressure-max = /bits/ 16 <255>;
+		ti,debounce-max = /bits/ 16 <10>;
+		ti,debounce-tol = /bits/ 16 <3>;
+		ti,debounce-rep = /bits/ 16 <1>;
+		ti,settle-delay-usec = /bits/ 16 <150>;
+		ti,keep-vref-on;
+		wakeup-source;
+	};
 };
 
 &ecspi2 {
+	fsl,spi-num-chipselects = <1>;
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&pinctrl_ecspi2>;
+	cs-gpios = <&gpio4 23 0>;
 	status = "disabled";
-	// fsl,spi-num-chipselects = <1>;
-	// pinctrl-names = "default", "sleep";
-	// pinctrl-0 = <&pinctrl_ecspi2>;
-	// cs-gpios = <&gpio4 23 0>;
-	// status = "okay";
-	//
-	// spidev0: spi@0 {
-	//	compatible = "var,spidev";
-	//	reg = <0>;
-	//	spi-max-frequency = <54000000>;
-	// };
+
+	spidev0: spi@0 {
+		compatible = "var,spidev";
+		reg = <0>;
+		spi-max-frequency = <54000000>;
+	};
 };
 
 &fec1 {
@@ -361,7 +359,7 @@
 
 // &mipi_csi {
 //	clock-frequency = <240000000>;
-//	status = "okay";
+//	status = "disabled";
 //	port {
 //		mipi_sensor_ep: endpoint1 {
 //			remote-endpoint = <&ov5640_mipi_ep>;
@@ -773,32 +771,32 @@
 		//	   >;
 		// };
 
-		// pinctrl_ecspi1: ecspi1grp {
-		//	fsl,pins = <
-		//		MX7D_PAD_ECSPI1_MISO__ECSPI1_MISO	0x2
-		//		MX7D_PAD_ECSPI1_MOSI__ECSPI1_MOSI	0x2
-		//		MX7D_PAD_ECSPI1_SCLK__ECSPI1_SCLK	0x2
-		//		MX7D_PAD_ECSPI1_SS0__GPIO4_IO19		0x2
-		//	>;
-		// };
+		pinctrl_ecspi1: ecspi1grp {
+			fsl,pins = <
+				MX7D_PAD_ECSPI1_MISO__ECSPI1_MISO	0x2
+				MX7D_PAD_ECSPI1_MOSI__ECSPI1_MOSI	0x2
+				MX7D_PAD_ECSPI1_SCLK__ECSPI1_SCLK	0x2
+				MX7D_PAD_ECSPI1_SS0__GPIO4_IO19		0x2
+			>;
+		};
 
-		// pinctrl_ecspi1_sleep: ecspi1grp_sleep {
-		//	fsl,pins = <
-		//		MX7D_PAD_ECSPI1_MISO__GPIO4_IO18	0x10
-		//		MX7D_PAD_ECSPI1_MOSI__GPIO4_IO17	0x10
-		//		MX7D_PAD_ECSPI1_SCLK__GPIO4_IO16	0x10
-		//		MX7D_PAD_ECSPI1_SS0__DISABLED		0x10
-		//	>;
-		// };
+		pinctrl_ecspi1_sleep: ecspi1grp_sleep {
+			fsl,pins = <
+				MX7D_PAD_ECSPI1_MISO__GPIO4_IO18	0x10
+				MX7D_PAD_ECSPI1_MOSI__GPIO4_IO17	0x10
+				MX7D_PAD_ECSPI1_SCLK__GPIO4_IO16	0x10
+				MX7D_PAD_ECSPI1_SS0__DISABLED		0x10
+			>;
+		};
 
-		// pinctrl_ecspi2: ecspi2grp {
-		//	fsl,pins = <
-		//		MX7D_PAD_ECSPI2_MISO__ECSPI2_MISO	0x2
-		//		MX7D_PAD_ECSPI2_MOSI__ECSPI2_MOSI	0x2
-		//		MX7D_PAD_ECSPI2_SCLK__ECSPI2_SCLK	0x2
-		//		MX7D_PAD_ECSPI2_SS0__GPIO4_IO23		0x2
-		//	>;
-		// };
+		pinctrl_ecspi2: ecspi2grp {
+			fsl,pins = <
+				MX7D_PAD_ECSPI2_MISO__ECSPI2_MISO	0x2
+				MX7D_PAD_ECSPI2_MOSI__ECSPI2_MOSI	0x2
+				MX7D_PAD_ECSPI2_SCLK__ECSPI2_SCLK	0x2
+				MX7D_PAD_ECSPI2_SS0__GPIO4_IO23		0x2
+			>;
+		};
 
 		pinctrl_enet1: enet1grp {
 			fsl,pins = <
@@ -990,11 +988,11 @@
 			>;
 		};
 
-		// pinctrl_ads7846_pendown: ads7846pendowngrp {
-		//	fsl,pins = <
-		//		MX7D_PAD_GPIO1_IO09__GPIO1_IO9		0x59
-		//	>;
-		// };
+		pinctrl_ads7846_pendown: ads7846pendowngrp {
+			fsl,pins = <
+				MX7D_PAD_GPIO1_IO09__GPIO1_IO9		0x59
+			>;
+		};
 
 		pinctrl_uart1: uart1grp {
 			fsl,pins = <
@@ -1135,7 +1133,7 @@
 	pinctrl-0 = <&pinctrl_lcdif_dat
 		     &pinctrl_lcdif_ctrl>;
 	display = <&display0>;
-	status = "okay";
+	status = "disabled";
 
 	display0: display0 {
 		bits-per-pixel = <32>;
@@ -1198,7 +1196,7 @@
 &pwm2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pwm2>;
-	status = "okay";
+	status = "disabled";
 };
 
 &iomuxc_lpsr {
@@ -1299,9 +1297,8 @@
 };
 
 &usbh {
+	vbus-supply = <&reg_hsic_hub_pwr_on>;
 	status = "disabled";
-	// status = "okay";
-	// vbus-supply = <&reg_hsic_hub_pwr_on>;
 };
 
 &usbotg1 {
