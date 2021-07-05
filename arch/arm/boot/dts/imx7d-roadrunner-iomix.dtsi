@@ -12,7 +12,7 @@
 
 / {
 	model = "REVO i.MX7D Industrial Gateway";
-	compatible = "variscite,imx7d-var-som", "fsl,imx7d";
+	compatible = "fsl,imx7d";
 
 	cpus {
 		cpu0: cpu@0 {
