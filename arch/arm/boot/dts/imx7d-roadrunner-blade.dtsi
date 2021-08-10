@@ -92,7 +92,7 @@
 
 		stat-red-led {
 			gpios = <&gpio3 11 GPIO_ACTIVE_HIGH>;
-			default-state = "off";
+			default-state = "on";
 		};
 
 		link-blue-led {
