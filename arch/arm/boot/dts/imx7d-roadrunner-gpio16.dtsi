@@ -199,21 +199,21 @@
 		};
 
 		reg_hsic_hub_pwr_on: reg_hsic_hub_pwr_on {
-			   compatible = "regulator-fixed";
-			   regulator-name = "hsic_hub_pwr_on";
-			   gpio = <&gpio1 10 GPIO_ACTIVE_HIGH>;
-			   enable-active-high;
-			   regulator-always-on;
-			   status = "disabled";
+			compatible = "regulator-fixed";
+			regulator-name = "hsic_hub_pwr_on";
+			gpio = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+			enable-active-high;
+			regulator-always-on;
+			status = "disabled";
 		};
 
 		reg_hsic_hub_connect: reg_hsic_hub_connect {
-			   compatible = "regulator-fixed";
-			   regulator-name = "reg_hsic_hub_connect";
-			   gpio = <&gpio1 12 GPIO_ACTIVE_HIGH>;
-			   enable-active-high;
-			   regulator-always-on;
-			   status = "disabled";
+			compatible = "regulator-fixed";
+			regulator-name = "reg_hsic_hub_connect";
+			gpio = <&gpio1 12 GPIO_ACTIVE_HIGH>;
+			enable-active-high;
+			regulator-always-on;
+			status = "disabled";
 		};
 	};
 };
